@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AutoComplete.cxx" />
+    <ClCompile Include="CallTip.cxx" />
+    <ClCompile Include="CaseConvert.cxx" />
+    <ClCompile Include="CaseFolder.cxx" />
+    <ClCompile Include="CellBuffer.cxx" />
+    <ClCompile Include="ChangeHistory.cxx" />
+    <ClCompile Include="CharacterCategoryMap.cxx" />
+    <ClCompile Include="CharacterType.cxx" />
+    <ClCompile Include="CharClassify.cxx" />
+    <ClCompile Include="ContractionState.cxx" />
+    <ClCompile Include="DBCS.cxx" />
+    <ClCompile Include="Decoration.cxx" />
+    <ClCompile Include="Document.cxx" />
+    <ClCompile Include="EditModel.cxx" />
+    <ClCompile Include="Editor.cxx" />
+    <ClCompile Include="EditView.cxx" />
+    <ClCompile Include="Geometry.cxx" />
+    <ClCompile Include="HanjaDic.cxx" />
+    <ClCompile Include="Indicator.cxx" />
+    <ClCompile Include="KeyMap.cxx" />
+    <ClCompile Include="LineMarker.cxx" />
+    <ClCompile Include="MarginView.cxx" />
+    <ClCompile Include="PerLine.cxx" />
+    <ClCompile Include="PlatWin.cxx" />
+    <ClCompile Include="PositionCache.cxx" />
+    <ClCompile Include="RESearch.cxx" />
+    <ClCompile Include="RunStyles.cxx" />
+    <ClCompile Include="ScintillaBase.cxx" />
+    <ClCompile Include="ScintillaDLL.cxx" />
+    <ClCompile Include="ScintillaWin.cxx" />
+    <ClCompile Include="Selection.cxx" />
+    <ClCompile Include="Style.cxx" />
+    <ClCompile Include="UniConversion.cxx" />
+    <ClCompile Include="UniqueString.cxx" />
+    <ClCompile Include="ViewStyle.cxx" />
+    <ClCompile Include="XPM.cxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\AutoComplete.h" />
+    <ClInclude Include="includes\CallTip.h" />
+    <ClInclude Include="includes\CaseConvert.h" />
+    <ClInclude Include="includes\CaseFolder.h" />
+    <ClInclude Include="includes\CellBuffer.h" />
+    <ClInclude Include="includes\CharacterCategoryMap.h" />
+    <ClInclude Include="includes\CharacterType.h" />
+    <ClInclude Include="includes\CharClassify.h" />
+    <ClInclude Include="includes\ContractionState.h" />
+    <ClInclude Include="includes\DBCS.h" />
+    <ClInclude Include="includes\Debugging.h" />
+    <ClInclude Include="includes\Decoration.h" />
+    <ClInclude Include="includes\Document.h" />
+    <ClInclude Include="includes\EditModel.h" />
+    <ClInclude Include="includes\Editor.h" />
+    <ClInclude Include="includes\EditView.h" />
+    <ClInclude Include="includes\ElapsedPeriod.h" />
+    <ClInclude Include="includes\Geometry.h" />
+    <ClInclude Include="includes\HanjaDic.h" />
+    <ClInclude Include="includes\ILexer.h" />
+    <ClInclude Include="includes\ILoader.h" />
+    <ClInclude Include="includes\Indicator.h" />
+    <ClInclude Include="includes\KeyMap.h" />
+    <ClInclude Include="includes\LineMarker.h" />
+    <ClInclude Include="includes\MarginView.h" />
+    <ClInclude Include="includes\Partitioning.h" />
+    <ClInclude Include="includes\PerLine.h" />
+    <ClInclude Include="includes\Platform.h" />
+    <ClInclude Include="includes\PlatWin.h" />
+    <ClInclude Include="includes\Position.h" />
+    <ClInclude Include="includes\PositionCache.h" />
+    <ClInclude Include="includes\RESearch.h" />
+    <ClInclude Include="includes\RunStyles.h" />
+    <ClInclude Include="includes\ScintillaBase.h" />
+    <ClInclude Include="includes\ScintillaMessages.h" />
+    <ClInclude Include="includes\ScintillaStructures.h" />
+    <ClInclude Include="includes\ScintillaTypes.h" />
+    <ClInclude Include="includes\ScintillaWin.h" />
+    <ClInclude Include="includes\Sci_Position.h" />
+    <ClInclude Include="includes\Selection.h" />
+    <ClInclude Include="includes\SparseVector.h" />
+    <ClInclude Include="includes\SplitVector.h" />
+    <ClInclude Include="includes\Style.h" />
+    <ClInclude Include="includes\UniConversion.h" />
+    <ClInclude Include="includes\UniqueString.h" />
+    <ClInclude Include="includes\ViewStyle.h" />
+    <ClInclude Include="includes\WinTypes.h" />
+    <ClInclude Include="includes\XPM.h" />
+    <ClInclude Include="PlatformRes.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8579ff68-779a-4444-b1c9-1aff86c2c007}</ProjectGuid>
+    <RootNamespace>Project2</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);includes</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);includes</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);includes</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <ExternalIncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);includes</ExternalIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <OmitFramePointers>false</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
