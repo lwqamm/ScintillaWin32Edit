@@ -6375,7 +6375,8 @@ sptr_t Editor::WndProc(Message iMessage, uptr_t wParam, sptr_t lParam) {
 
 	case Message::GetMarginLeft:
 		return vs.leftMarginWidth;
-
+	case Message::GetEDITLeft:
+		return lastXChosen;
 	case Message::GetMarginRight:
 		return vs.rightMarginWidth;
 
