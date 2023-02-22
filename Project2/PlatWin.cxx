@@ -582,6 +582,7 @@ public:
 	void  OnDrawText(HDC dc, PMyCEDIT sp, DWORD x, DWORD y);
 	//»­ÐÐºÅ
 	void  OnDrawLineNum(HDC dc, PMyCEDIT sp, DWORD x, DWORD y);
+	
 	SurfaceMode mode;
 	HDC hdc{};
 	bool hdcOwned=false;
@@ -995,7 +996,8 @@ void  SurfaceGDI::OnDrawText(HDC dc, PMyCEDIT sp, DWORD x, DWORD y)
 
 
 SurfaceGDI::SurfaceGDI() noexcept {
-	AddEditStr(cppKeyWords);
+	AddEditStr(cppKeyWords);//#define SET_EDITLINECOLOR              0x6                    //ÐÐºÅÑÕÉ«
+	Aem.SetEditTextColor(SET_EDITLINECOLOR, RGB(0x20, 0x90, 0x20));
 }
 
 SurfaceGDI::SurfaceGDI(HDC hdcCompatible, int width, int height, SurfaceMode mode_, int logPixelsY_) noexcept {
@@ -1461,6 +1463,7 @@ void SurfaceGDI::Copy(PRectangle rc, Point from, Surface &surfaceSource) {
 		static_cast<int>(rc.Width()), static_cast<int>(rc.Height()),
 		dynamic_cast<SurfaceGDI &>(surfaceSource).hdc,
 		static_cast<int>(from.x), static_cast<int>(from.y), SRCCOPY);
+	return;
 }
 
 std::unique_ptr<IScreenLineLayout> SurfaceGDI::Layout(const IScreenLine *) {
@@ -1473,27 +1476,32 @@ void SurfaceGDI::DrawTextCommon(PRectangle rc, const Font *font_, XYPOSITION yba
 	SetFont(font_);
 	const RECT rcw = RectFromPRectangle(rc);
 	const int x = static_cast<int>(rc.left);
+
 	const int yBaseInt = static_cast<int>(ybase);
 	DWORD ORCO = 0;
 	if (mode.codePage == CpUtf8) {
 		const TextWide tbuf(text, mode.codePage);
-		//if (wcscmp(L"int", tbuf.buffer)==0)
-		//{
-		//	ORCO = ::SetTextColor(hdc, RGB(0x2f, 0x2f, 0xff));
-		//	::ExtTextOutW(hdc, x, yBaseInt, fuOptions, &rcw, tbuf.buffer, tbuf.tlen, nullptr);
-		//	::SetTextColor(hdc, ORCO);
-		//	return;
-		//}
 
 		MyCEDIT p11;
 		Unicode2Ansi(tbuf.buffer, p11.m_str, tbuf.tlen);
-		
-		p11.m_Strlen = strlen(p11.m_str);
-		if (x<=20)
+
+		if (Aem.m_LEF==0)
 		{
-			OnDrawLineNum(hdc, &p11, x, yBaseInt);
+			Aem.m_LEF  = SendMessage(Aem.m_hWnd, GET_EDIT_LEFT, 0, 0);
+
+		}
+		p11.m_Strlen = strlen(p11.m_str);
+		if (x< Aem.m_LEF)
+		{
+			int x1 = x;
+			if (x1 < 0)
+			{
+				x1 = 0;//BitBlt
+			}
+			OnDrawLineNum(hdc, &p11, x1, yBaseInt);
 			return;
 		}
+
 		OnDrawText(hdc, &p11,x, yBaseInt);
 
 		//::ExtTextOutW(hdc, x, yBaseInt, fuOptions, &rcw, tbuf.buffer, tbuf.tlen, nullptr);
@@ -1503,9 +1511,21 @@ void SurfaceGDI::DrawTextCommon(PRectangle rc, const Font *font_, XYPOSITION yba
 		MyCEDIT p11;
 		sprintf(p11.m_str, "%s", text.data());
 		p11.m_Strlen = strlen(p11.m_str);
-		if (x <= 20)
+		if (Aem.m_LEF ==0)
 		{
-			OnDrawLineNum(hdc, &p11, x, yBaseInt);
+			Aem.m_LEF = SendMessage(Aem.m_hWnd, GET_EDIT_LEFT,0,0);
+
+		}
+
+		if (x < Aem.m_LEF)
+		{
+			int x1 = x;
+			if (x1<0)
+			{
+				x1 = 0;
+			}
+
+			OnDrawLineNum(hdc, &p11, x1, yBaseInt);
 			return;
 		}
 		OnDrawText(hdc, &p11, x, yBaseInt);

@@ -1992,7 +1992,7 @@ sptr_t ScintillaWin::WndProc(Message iMessage, uptr_t wParam, sptr_t lParam) {
 				Aem.SetEditTextColor(wParam,lParam);
 				return 0;
 			}
-			
+			Aem.m_hWnd = MainHWND();
 			//MessageBox(0,"我被调用了","提示",MB_OK);
 			
 			return AddEditStr((char*)lParam);
