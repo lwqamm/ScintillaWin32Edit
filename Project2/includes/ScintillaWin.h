@@ -24,6 +24,9 @@ void toUpper_(char* src);//大写到小写
 #define SET_EDITHIGHLICOLOR            0x1                    //字体高亮颜色
 #define SET_EDITDIGITALCOLOR           0x2                    //数字颜色
 #define SET_EDITNOTECOLOR              0x3                    //注释颜色
+#define SET_EDITLINECOLOR              0x4                    //行号颜色
+#define GET_EDIT_LEFT                 2156+1000               //获取左边距离
+
 
 typedef 	struct _HIGHEDIT //高亮关键字
 {
@@ -151,6 +154,17 @@ public:
 			return;
 
 		}
+		case SET_EDITLINECOLOR:
+		{
+			if (Cor < 0)
+			{
+				return;
+			}
+			m_LineColor = Cor;
+			return;
+
+		}
+
 		default:
 			break;
 		}
@@ -194,7 +208,10 @@ public:
 	DWORD  m_DigitalColor =   128;                                       //数字颜色
 	DWORD  m_NoteColor =       RGB(0x20, 0x90, 0x20);                    //注释颜色
 	DWORD  m_FontColor = 0;                                              //编辑框字体颜色
-	DWORD  m_LineColor = RGB(0x20, 0x90, 0x20);                          //行号颜色
+	DWORD  m_LineColor =       RGB(0x20, 0x90, 0x20);                     //行号颜色
+	HWND   m_hWnd = 0;                                                    //操作窗口
+
+		int m_LEF = 0;
 }HIGHEDITARR, * PHIGHEDITARR, * LPHIGHEDITARR, * NPHIGHEDITARR;
 #endif
 typedef 	struct _MyCEDIT
