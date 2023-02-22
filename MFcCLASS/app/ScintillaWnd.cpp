@@ -1,9 +1,9 @@
 #include "../pch.h"
-#include "ScintillaWnd.h"
-#include "MyPic.h"
+#include "../includes/ScintillaWnd.h"
+#include "../MyPic.h"
 #include "../resource.h"
-#include "SciLexer.h"
-#include "Scintilla.h"
+#include "../includes/SciLexer.h"
+
 
 // ScintillaWnd
 
@@ -12,17 +12,36 @@ IMPLEMENT_DYNAMIC(ScintillaWnd, CWnd)
 ScintillaWnd::ScintillaWnd()
 {
 	m_hSciLexerDll = NULL;
-	CString dllpath = GetIniDLLpath();
-	if (!file_exist(dllpath+"\\Scintilla64.dll"))
+	CString dllpath = GetIniDLLpath();//IDR_DLL2
+	if (sizeof(LPVOID) == 8)
 	{
-		FreeMyResource(IDR_DLL1,"DLL", dllpath + "\\Scintilla64.dll");
+		if (!file_exist(dllpath + "\\Scintilla64.dll"))
+		{
+			FreeMyResource(IDR_DLL1, "DLL", dllpath + "\\Scintilla64.dll");
+		}
+		if (!file_exist(dllpath + "\\Scintilla64.dll"))
+		{
+			AfxMessageBox(_T("DLL文件释放失败！"));
+			return;
+		}
+		m_hSciLexerDll = LoadLibrary(_T(dllpath + "\\Scintilla64.dll"));  //H:\VS1\Scintilla\x64\Release\Project2.dll
+		//m_hSciLexerDll = LoadLibrary(_T("H:\\VS1\\Scintilla\\x64\\Release\\Project2.dll"));
 	}
-	if (!file_exist(dllpath + "\\Scintilla64.dll"))
+	else
 	{
-		AfxMessageBox(_T("DLL文件释放失败！"));
-		return;
+		if (!file_exist(dllpath + "\\Scintilla32.dll"))
+		{
+			FreeMyResource(IDR_DLL2, "DLL", dllpath + "\\Scintilla32.dll");
+		}
+		if (!file_exist(dllpath + "\\Scintilla32.dll"))
+		{
+			AfxMessageBox(_T("DLL文件释放失败！"));
+			return;
+		}
+		m_hSciLexerDll = LoadLibrary(_T(dllpath + "\\Scintilla32.dll"));  //H:\\VS1\\Scintilla\\Release\\Project2.dll
+		//m_hSciLexerDll = LoadLibrary(_T("H:\\VS1\\Scintilla\\Release\\Project2.dll"));
 	}
-	m_hSciLexerDll = LoadLibrary(_T(dllpath + "\\Scintilla64.dll"));  //H:\VS1\Scintilla\x64\Release\Project2.dll
+
 	//m_hSciLexerDll = LoadLibrary(_T("H:\\VS1\\Scintilla\\x64\\Release\\Project2.dll"));
 	if (NULL == m_hSciLexerDll)
 	{
@@ -77,6 +96,7 @@ void ScintillaWnd::SetDefaultColorFont(int nSize, const TCHAR* face)
 	SendMessage(SCI_STYLESETBACK, STYLE_DEFAULT, RGB(0xff, 0xff, 0xff));
 	SendMessage(SCI_STYLESETSIZE, STYLE_DEFAULT, nSize);
 	SendMessage(SCI_STYLESETFONT, STYLE_DEFAULT, reinterpret_cast<LPARAM>(face));
+	
 }
 
 void ScintillaWnd::SetFold(BOOL bFold)
@@ -112,7 +132,7 @@ void ScintillaWnd::UpdateLineNumberWidth(void)
 		iLineNum /= 10;
 	}
 	iLineMarginWidthNow = SendMessage(SCI_GETMARGINWIDTHN, 0, 0);
-	long charWidth = SendMessage(SCI_TEXTWIDTH, STYLE_LINENUMBER, (LPARAM)("9"));
+	long charWidth = SendMessage(SCI_TEXTWIDTH, STYLE_LINENUMBER, (LPARAM)("20"));//设置行号宽度
 	iLineMarginWidthFit = charWidth * iLineNumCount;
 
 	if (iLineMarginWidthNow != iLineMarginWidthFit)
